@@ -60,7 +60,7 @@ document.getElementById("picture").addEventListener("change", function (e) {
   }
 
   const fileInfo = document.getElementById("fileInfo");
-  fileInfo.textContent = `File: ${file.name} <br> Size: ${formatFileSize(
+  fileInfo.innerHTML = `File: ${file.name} <br> Size: ${formatFileSize(
     file.size
   )}`;
   fileInfo.classList.remove("hidden");
