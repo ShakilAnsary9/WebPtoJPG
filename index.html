@@ -72,73 +72,85 @@
       </div>
     </nav>
 
-    <div class="w-100 flex justify-center">
-      <div class="grid w-full max-w-xl items-center gap-1.5">
+    <!-- Tool  -->
+    <div class="w-100 mt-24 sm:mt-40 flex justify-center">
+      <div class="grid mx-3 sm:mx-0 w-full max-w-xl items-center gap-1.5">
         <div
           id="fileDrop"
-          class="w-full h-80 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center overflow-hidden"
+          class="relative w-full h-80 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center overflow-hidden"
         >
-          <div id="previewImage" class="hidden w-24"></div>
           <label
             for="picture"
-            class="w-full h-full flex flex-col items-center justify-center text-gray-400 cursor-pointer"
+            class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-gray-400 cursor-pointer"
           >
+            <div
+              id="previewImage"
+              class="hidden w-40 h-40 -mt-12 sm:mt-0 mb-2 sm:mb-5 rounded-lg overflow-hidden object-cover"
+            ></div>
             <svg
               id="uploadIcon"
               xmlns="http://www.w3.org/2000/svg"
-              class="h-8 w-8 mb-2 transition duration-300 ease-in-out"
-              viewBox="0 0 20 20"
-              fill="currentColor"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
             >
-              <path
-                fill-rule="evenodd"
-                d="M5 9a1 1 0 0 0 1 1h8a1 1 0 0 0 0-2H6a1 1 0 0 0-1 1zM3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z"
-                clip-rule="evenodd"
-              />
+              <g fill="currentColor">
+                <path
+                  d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"
+                  opacity=".5"
+                />
+                <path
+                  d="M8 7.75a.75.75 0 0 1 0-1.5h8a.75.75 0 0 1 0 1.5H8ZM12.75 17a.75.75 0 0 1-1.5 0v-5.19l-1.72 1.72a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06l-1.72-1.72V17Z"
+                />
+              </g>
             </svg>
-            <span
-              id="uploadText"
-              class="text-sm font-medium transition duration-300 ease-in-out"
-              >Drag & Drop files here</span
-            >
-            <span
-              id="uploadText2"
-              class="text-xs text-gray-500 transition duration-300 ease-in-out"
-              >(or click to browse)</span
-            >
+            <div id="uploadText" class="flex flex-col text-center">
+              <span
+                class="text-sm font-medium transition duration-300 ease-in-out"
+                >Drag & Drop files here</span
+              >
+              <span
+                class="text-xs text-gray-500 transition duration-300 ease-in-out"
+                >(or click to browse)</span
+              >
+            </div>
           </label>
           <input
             id="picture"
             type="file"
-            class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+            class="w-full h-full opacity-0 cursor-pointer"
             accept="image/webp"
           />
 
-          <div id="fileInfo" class="hidden mt-3 text-sm text-gray-600"></div>
+          <div
+            id="fileInfo"
+            class="hidden mt-3 mb-5 text-center text-sm text-gray-600"
+          ></div>
         </div>
       </div>
     </div>
+    <!-- Controls  -->
+    <div
+      class="controls mt-8 text-center flex flex-col justify-center items-center"
+    >
+      <button
+        id="convertBtn"
+        class="w-mbtn sm:w-lbtn bg-primary py-2 my-2 rounded-lg"
+      >
+        Convert to JPG
+      </button>
+      <button
+        id="downloadBtn"
+        class="w-mbtn sm:w-lbtn hidden bg-primary py-2 my-2 rounded-lg"
+      >
+        Download the JPG File
+      </button>
 
-    <!-- <script>
-      document
-        .getElementById("picture")
-        .addEventListener("change", function (e) {
-          const file = e.target.files[0];
-          const fileInfo = document.getElementById("fileInfo");
-          fileInfo.textContent = `File: ${file.name}, Size: ${formatFileSize(
-            file.size
-          )}`;
-          fileInfo.classList.remove("hidden");
-        });
-
-      function formatFileSize(bytes) {
-        if (bytes === 0) return "0 Bytes";
-        const k = 1024;
-        const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
-      }
-    </script> -->
+      <span id="alert" class="text-red-500 hidden"
+        ><i class="lineui lineui-danger text-current"></i> Upload a WebP Image
+        First</span
+      >
+    </div>
 
     <script src="./script.js"></script>
   </body>

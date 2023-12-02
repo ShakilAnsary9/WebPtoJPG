@@ -15,7 +15,7 @@ module.exports = {
         space: "'Space Grotesk', sans-serif",
       },
       width: {
-        mbtn: "46%",
+        mbtn: "70%",
         lbtn: "23%",
       },
     },
